@@ -25,5 +25,4 @@ def main(argv):
 	return 0
 
 if __name__ == "__main__":
-	print("Freya is amazing at this haha syke")
 	sys.exit(main(sys.argv))
