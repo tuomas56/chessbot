@@ -1,0 +1,29 @@
+#!/usr/bin/env python3
+
+from argparse import ArgumentParser
+import sys
+from chess import ChessBot, Side
+
+def main(argv):
+	parser = ArgumentParser()
+	args = parser.parse_args(argv[1:])
+	bot = ChessBot(Side.WHITE)
+	while True:
+		bot.board.print()
+		print("Computer's Move:")
+		a, b, cp = bot.move()
+		print('>>', bot.board.to_str_pos(a), bot.board.to_str_pos(b), 'capturing %s points.' % cp, '\n')
+		bot.board.print()
+
+		while True:
+			print("Your Move:")
+			a, b = map(bot.board.to_num_pos, input(">> ").split(' '))
+			if bot.board.move(a, b):
+				break
+			else:
+				print("Illegal Move.")
+	return 0
+
+if __name__ == "__main__":
+	print("Freya is amazing at this haha syke")
+	sys.exit(main(sys.argv))
